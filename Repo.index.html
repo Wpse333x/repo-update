@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+
+namespace DataTrackingProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> trackedData = new List<string>();
+
+            Console.WriteLine("Welcome to the Data Tracking Program!");
+
+            while (true)
+            {
+                Console.WriteLine("\nSelect an option:");
+                Console.WriteLine("1. Track new data");
+                Console.WriteLine("2. View tracked data");
+                Console.WriteLine("3. Exit");
+
+                int choice;
+                if (!int.TryParse(Console.ReadLine(), out choice))
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    continue;
+                }
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Enter data to track: ");
+                        string newData = Console.ReadLine();
+                        trackedData.Add(newData);
+                        Console.WriteLine("Data tracked successfully!");
+                        break;
+                    case 2:
+                        Console.WriteLine("Tracked data:");
+                        foreach (string data in trackedData)
+                        {
+                            Console.WriteLine(data);
+                        }
+                        break;
+                    case 3:
+                        Console.WriteLine("Exiting program...");
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please select a valid option.");
+                        break;
+                }
+            }
+        }
+    }
+}
